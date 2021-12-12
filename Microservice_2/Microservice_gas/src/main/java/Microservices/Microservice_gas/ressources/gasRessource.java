@@ -32,7 +32,7 @@ public class gasRessource {
         for (gas gas : gas_tab) {
             msg += "le capteur de gas " + gas.getId() + " de l'étage " + gas.getEtage()
                     + ", salle "
-                    + gas.getSalle() + " : " + gas.getData();
+                    + gas.getSalle() + " : " + gas.getData() + "<br>";
         }
         return msg;
     }

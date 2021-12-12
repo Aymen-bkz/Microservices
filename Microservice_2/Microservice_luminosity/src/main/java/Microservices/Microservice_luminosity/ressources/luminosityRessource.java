@@ -31,7 +31,7 @@ public class luminosityRessource {
         String msg = "";
         for (Luminosity Luminosity : luminosities_tab) {
             msg += "le capteur de Luminosité " + Luminosity.getId() + " de l'étage " + Luminosity.getEtage() + ", salle "
-                    + Luminosity.getSalle() + " est " + Luminosity.getData();
+                    + Luminosity.getSalle() + " est " + Luminosity.getData() + "<br>";
         }
         return msg;
     }

@@ -32,7 +32,7 @@ public class presenceRessource {
 		String msg = "";
 		for (Presence presence : tabPresence) {
 			msg += "le capteur de présence " + presence.getId() + " de l'étage " + presence.getEtage() + ", salle "
-					+ presence.getSalle() + " est " + presence.isEtat();
+					+ presence.getSalle() + " est " + presence.isEtat() + "<br>";
 		}
 		return msg;
 	}
