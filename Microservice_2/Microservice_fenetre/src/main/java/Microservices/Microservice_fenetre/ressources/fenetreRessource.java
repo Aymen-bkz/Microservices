@@ -17,7 +17,7 @@ public class fenetreRessource {
     private fenetre[] fenetres_tab = { new fenetre(1, 0, 1), new fenetre(2, 0, 2), new fenetre(3, 1, 1),
             new fenetre(4, 1, 2) };
 
-    @GetMapping("all")
+    @GetMapping("/status")
     public String fenetre_all() {
         String msg = "";
         for (fenetre fenetre : fenetres_tab) {
@@ -31,7 +31,16 @@ public class fenetreRessource {
         return msg;
     }
 
-    @GetMapping("{id}")
+    @GetMapping("/all")
+	public List<fenetre> getAllfenetre() {
+		List<fenetre> fenetre_list = new ArrayList<fenetre>();
+		for (fenetre fenetre : fenetres_tab) {
+			fenetre_list.add(fenetre);
+		}
+		return fenetre_list;
+	}
+
+    @GetMapping("/{id}")
     public fenetre getfenetreByID(@PathVariable int id) {
         fenetre buff = new fenetre();
         for (fenetre fenetre : fenetres_tab) {
@@ -42,7 +51,7 @@ public class fenetreRessource {
         return buff;
     }
 
-    @GetMapping("etages/{etage}")
+    @GetMapping("/etages/{etage}")
     public List<fenetre> getfenetreEtage(@PathVariable int etage) {
         List<fenetre> fenetre_list = new ArrayList<fenetre>();
         for (fenetre fenetre : fenetres_tab) {
@@ -53,7 +62,7 @@ public class fenetreRessource {
         return fenetre_list;
     }
 
-    @GetMapping("salles/{salle}")
+    @GetMapping("/salles/{salle}")
     public List<fenetre> getfenetreSalle(@PathVariable int salle) {
         List<fenetre> fenetre_list = new ArrayList<fenetre>();
         for (fenetre fenetre : fenetres_tab) {
@@ -64,7 +73,7 @@ public class fenetreRessource {
         return fenetre_list;
     }
 
-    @PostMapping("order/{id}/{etage}/{salle}/{etat}")
+    @PostMapping("/order/{id}/{etage}/{salle}/{etat}")
     public fenetre setfenetreOrder(@PathVariable int id, @PathVariable int etage, @PathVariable int salle,
             @PathVariable Boolean etat) {
         fenetre buff = new fenetre();

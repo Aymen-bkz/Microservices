@@ -1,0 +1,74 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-MicroserviceControlleurApplication<Microservice_controlleur>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "Microservices.Microservice_controlleur.MicroserviceControlleurApplication",
+            "projectName": "Microservice_controlleur",
+            "args": ""
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-MicroserviceFenetreApplication<Microservice_fenetre>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "Microservices.Microservice_fenetre.MicroserviceFenetreApplication",
+            "projectName": "Microservice_fenetre",
+            "args": ""
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-MicroserviceGasApplication<Microservice_gas>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "Microservices.Microservice_gas.MicroserviceGasApplication",
+            "projectName": "Microservice_gas",
+            "args": ""
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-MicroserviceLampeApplication<Microservice_lampe>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "Microservices.Microservice_lampe.MicroserviceLampeApplication",
+            "projectName": "Microservice_lampe",
+            "args": ""
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-MicroserviceVoletApplication<Microservice_volet>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "Microservices.Microservice_volet.MicroserviceVoletApplication",
+            "projectName": "Microservice_volet",
+            "args": ""
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-MicroservicePresenceApplication<Microservice_presence>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "Microservices.Microservice_presence.MicroservicePresenceApplication",
+            "projectName": "Microservice_presence",
+            "args": ""
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-MicroserviceLuminosityApplication<Microservice_luminosity>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "Microservices.Microservice_luminosity.MicroserviceLuminosityApplication",
+            "projectName": "Microservice_luminosity",
+            "args": ""
+        }
+    ]
+}

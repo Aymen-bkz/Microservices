@@ -4,6 +4,20 @@ public class volet {
 	
 	private int id, etage, salle;
 	private boolean etat;
+
+	private double order;
+	
+	public double getOrder() {
+		return order;
+	}
+	public void setOrder(double order) {
+		this.order = order;
+		if(this.order > 1)
+			this.etat = true;
+		else
+			this.etat = false;
+	}
+	
 	public int getId() {
 		return id;
 	}

@@ -17,7 +17,7 @@ import Microservices.Microservice_volet.model.*;
 public class voletRessource { 
     private volet[] volets_tab = {new volet(1,0,1), new volet(2, 0, 2), new volet(3, 1, 1), new volet(4, 1, 2)};
 
-    @GetMapping("all")
+    @GetMapping("/status")
     public String volet_all() {
         String msg = "";
         for (volet volet : volets_tab) {
@@ -30,7 +30,16 @@ public class voletRessource {
         return msg;        
     }
 
-    @GetMapping("{id}")
+    @GetMapping("/all")
+	public List<volet> getAllvolet() {
+		List<volet> volet_list = new ArrayList<volet>();
+		for (volet volet : volets_tab) {
+			volet_list.add(volet);
+		}
+		return volet_list;
+	}
+
+    @GetMapping("/{id}")
     public volet getVoletByID(@PathVariable int id) {
         volet buff = new volet();
         for (volet volet : volets_tab) {
@@ -41,7 +50,7 @@ public class voletRessource {
         return buff;
     }
 
-    @GetMapping("etages/{etage}")
+    @GetMapping("/etages/{etage}")
     public List<volet> getvoletEtage(@PathVariable int etage) {
         List<volet> volet_list = new ArrayList<volet>();
         for (volet volet : volets_tab) {
@@ -52,7 +61,7 @@ public class voletRessource {
         return volet_list;
     }
 
-    @GetMapping("salles/{salle}")
+    @GetMapping("/salles/{salle}")
     public List<volet> getvoletSalle(@PathVariable int salle) {
         List<volet> volet_list = new ArrayList<volet>();
         for (volet volet : volets_tab) {
@@ -63,7 +72,7 @@ public class voletRessource {
         return volet_list;
     }
 
-    @PostMapping("order/{id}/{etage}/{salle}/{order}")
+    @PostMapping("/order/{id}/{etage}/{salle}/{order}")
     public volet setVoletOrder(@PathVariable int id, @PathVariable int etage, @PathVariable int salle, @PathVariable double order) {
         volet buff = new volet();
         System.out.println("id " + id + " etage " + etage + " salle " + salle + " order " + order);

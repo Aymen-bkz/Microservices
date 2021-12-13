@@ -12,12 +12,12 @@ import org.springframework.web.bind.annotation.RestController;
 import Microservices.Microservice_lampe.model.Lampe;
 
 @RestController
-@RequestMapping("/lamps")
+@RequestMapping("/lampes")
 public class lampeRessource {
     private Lampe[] Lampes_tab = { new Lampe(1, 0, 1), new Lampe(2, 0, 2), new Lampe(3, 1, 1),
             new Lampe(4, 1, 2) };
 
-    @GetMapping("all")
+    @GetMapping("/status")
     public String Lampe_all() {
         String msg = "";
         for (Lampe Lampe : Lampes_tab) {
@@ -31,7 +31,16 @@ public class lampeRessource {
         return msg;
     }
 
-    @GetMapping("{id}")
+    @GetMapping("/all")
+	public List<Lampe> getAllLampe() {
+		List<Lampe> Lampe_list = new ArrayList<Lampe>();
+		for (Lampe Lampe : Lampes_tab) {
+			Lampe_list.add(Lampe);
+		}
+		return Lampe_list;
+	}
+
+    @GetMapping("/{id}")
     public Lampe getLampeByID(@PathVariable int id) {
         Lampe buff = new Lampe();
         for (Lampe Lampe : Lampes_tab) {
@@ -42,7 +51,7 @@ public class lampeRessource {
         return buff;
     }
 
-    @GetMapping("etages/{etage}")
+    @GetMapping("/etages/{etage}")
     public List<Lampe> getLampeEtage(@PathVariable int etage) {
         List<Lampe> Lampe_list = new ArrayList<Lampe>();
         for (Lampe Lampe : Lampes_tab) {
@@ -53,7 +62,7 @@ public class lampeRessource {
         return Lampe_list;
     }
 
-    @GetMapping("salles/{salle}")
+    @GetMapping("/salles/{salle}")
     public List<Lampe> getLampeSalle(@PathVariable int salle) {
         List<Lampe> Lampe_list = new ArrayList<Lampe>();
         for (Lampe Lampe : Lampes_tab) {
@@ -64,7 +73,7 @@ public class lampeRessource {
         return Lampe_list;
     }
 
-    @PostMapping("order/{id}/{etage}/{salle}/{etat}")
+    @PostMapping("/order/{id}/{etage}/{salle}/{etat}")
     public Lampe setLampeOrder(@PathVariable int id, @PathVariable int etage, @PathVariable int salle,
             @PathVariable Boolean etat) {
         Lampe buff = new Lampe();

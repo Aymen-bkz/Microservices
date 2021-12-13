@@ -14,7 +14,7 @@ import Microservices.Microservice_presence.model.*;
 @RequestMapping("/presence")
 public class presenceRessource {
 
-	private static Presence[] tabPresence = { new Presence(1, 0, 1, false), new Presence(2, 0, 1, false),
+	private static Presence[] tabPresence = { new Presence(1, 0, 1, false), new Presence(2, 0, 1, true),
 			new Presence(3, 1, 1, false), new Presence(4, 1, 1, false) };
 
 	@GetMapping("/{id}")
@@ -27,7 +27,7 @@ public class presenceRessource {
 		return buff;
 	}
 
-	@GetMapping("/all")
+	@GetMapping("/status")
 	public String getState_all() {
 		String msg = "";
 		for (Presence presence : tabPresence) {
@@ -37,7 +37,16 @@ public class presenceRessource {
 		return msg;
 	}
 
-	@GetMapping("/Etage/{etage}")
+	@GetMapping("/all")
+	public List<Presence> getAllPresence() {
+		List<Presence> presence_list = new ArrayList<Presence>();
+		for (Presence presence : tabPresence) {
+			presence_list.add(presence);
+		}
+		return presence_list;
+	}
+
+	@GetMapping("/etage/{etage}")
 	public List<Presence> getState_Etage(@PathVariable int etage) {
 		List<Presence> presence_list = new ArrayList<Presence>();
         for (Presence presence : tabPresence) {
@@ -48,7 +57,7 @@ public class presenceRessource {
         return presence_list;
 	}
 
-	@GetMapping("/Salle/{salle}")
+	@GetMapping("/salle/{salle}")
 	public List<Presence> getState_Salle(@PathVariable int salle) {
 		List<Presence> Presence_list = new ArrayList<Presence>();
         for (Presence Presence : tabPresence) {
