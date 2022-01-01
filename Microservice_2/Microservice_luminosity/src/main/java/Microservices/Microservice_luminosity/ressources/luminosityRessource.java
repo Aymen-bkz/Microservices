@@ -13,13 +13,14 @@ import Microservices.Microservice_luminosity.model.Luminosity;
 @RestController
 @RequestMapping("/luminosité")
 public class luminosityRessource {
-    private Luminosity[] luminosities_tab = { new Luminosity(1, 0, 1), new Luminosity(2, 0, 2), new Luminosity(3, 1, 1),
-            new Luminosity(4, 1, 2) };
+    private Luminosity[] luminosities_tab = { new Luminosity(0, 1), new Luminosity(0, 2), new Luminosity(1, 1),
+            new Luminosity(1, 2) };
 
     @GetMapping("/{id}")
     public Luminosity getState_id(@PathVariable int id) {
         Luminosity buff = new Luminosity();
         for (Luminosity Luminosity : luminosities_tab) {
+            Luminosity.update();
             if (Luminosity.getId() == id)
                 buff = Luminosity;
         }
@@ -40,6 +41,7 @@ public class luminosityRessource {
 	public List<Luminosity> getAllLuminosity() {
 		List<Luminosity> Luminosity_list = new ArrayList<Luminosity>();
 		for (Luminosity Luminosity : luminosities_tab) {
+            Luminosity.update();
 			Luminosity_list.add(Luminosity);
 		}
         System.out.println(Luminosity_list);
@@ -50,6 +52,7 @@ public class luminosityRessource {
     public List<Luminosity> getState_Etage(@PathVariable int etage) {
         List<Luminosity> Luminosity_list = new ArrayList<Luminosity>();
         for (Luminosity Luminosity : luminosities_tab) {
+            Luminosity.update();
             if (Luminosity.getEtage() == etage)
                 Luminosity_list.add(Luminosity);
         }
@@ -61,6 +64,7 @@ public class luminosityRessource {
     public List<Luminosity> getState_Salle(@PathVariable int salle) {
         List<Luminosity> Luminosity_list = new ArrayList<Luminosity>();
         for (Luminosity Luminosity : luminosities_tab) {
+            Luminosity.update();
             if (Luminosity.getEtage() == salle)
                 Luminosity_list.add(Luminosity);
         }

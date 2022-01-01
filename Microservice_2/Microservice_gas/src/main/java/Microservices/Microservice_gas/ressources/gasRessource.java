@@ -13,13 +13,14 @@ import Microservices.Microservice_gas.model.gas;
 @RestController
 @RequestMapping("gas")
 public class gasRessource {
-    private gas[] gas_tab = { new gas(1, 0, 1, 0), new gas(2, 0, 2, 50), new gas(3, 1, 1, 100),
-            new gas(4, 1, 2, 200) };
+    private gas[] gas_tab = { new gas(0, 1), new gas(0, 2), new gas(1, 1),
+            new gas(1, 2) };
 
     @GetMapping("/{id}")
     public gas getState_id(@PathVariable int id) {
         gas buff = new gas();
         for (gas gas : gas_tab) {
+            gas.update();
             if (gas.getId() == id)
                 buff = gas;
         }
@@ -38,18 +39,20 @@ public class gasRessource {
     }
 
     @GetMapping("/all")
-	public List<gas> getAllgas() {
-		List<gas> gas_list = new ArrayList<gas>();
-		for (gas gas : gas_tab) {
-			gas_list.add(gas);
-		}
-		return gas_list;
-	}
+    public List<gas> getAllgas() {
+        List<gas> gas_list = new ArrayList<gas>();
+        for (gas gas : gas_tab) {
+            gas.update();
+            gas_list.add(gas);
+        }
+        return gas_list;
+    }
 
     @GetMapping("/etage/{etage}")
     public List<gas> getState_Etage(@PathVariable int etage) {
         List<gas> gas_list = new ArrayList<gas>();
         for (gas gas : gas_tab) {
+            gas.update();
             if (gas.getEtage() == etage)
                 gas_list.add(gas);
         }
@@ -61,6 +64,7 @@ public class gasRessource {
     public List<gas> getState_Salle(@PathVariable int salle) {
         List<gas> gas_list = new ArrayList<gas>();
         for (gas gas : gas_tab) {
+            gas.update();
             if (gas.getEtage() == salle)
                 gas_list.add(gas);
         }

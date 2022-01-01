@@ -14,13 +14,14 @@ import Microservices.Microservice_presence.model.*;
 @RequestMapping("/presence")
 public class presenceRessource {
 
-	private static Presence[] tabPresence = { new Presence(1, 0, 1, false), new Presence(2, 0, 1, true),
-			new Presence(3, 1, 1, false), new Presence(4, 1, 1, false) };
+	private static Presence[] tabPresence = { new Presence(0, 1), new Presence(0, 2),
+			new Presence(1, 1), new Presence(1, 2) };
 
 	@GetMapping("/{id}")
 	public Presence getState_id(@PathVariable int id) {
 		Presence buff = new Presence();
 		for (Presence presence : tabPresence) {
+			presence.update();
 			if (presence.getId() == id)
 				buff = presence;
 		}
@@ -41,6 +42,7 @@ public class presenceRessource {
 	public List<Presence> getAllPresence() {
 		List<Presence> presence_list = new ArrayList<Presence>();
 		for (Presence presence : tabPresence) {
+			presence.update();
 			presence_list.add(presence);
 		}
 		return presence_list;
@@ -50,6 +52,7 @@ public class presenceRessource {
 	public List<Presence> getState_Etage(@PathVariable int etage) {
 		List<Presence> presence_list = new ArrayList<Presence>();
         for (Presence presence : tabPresence) {
+			presence.update();
             if(presence.getEtage() == etage)
                 presence_list.add(presence);
         }
@@ -60,9 +63,10 @@ public class presenceRessource {
 	@GetMapping("/salle/{salle}")
 	public List<Presence> getState_Salle(@PathVariable int salle) {
 		List<Presence> Presence_list = new ArrayList<Presence>();
-        for (Presence Presence : tabPresence) {
-            if(Presence.getEtage() == salle)
-                Presence_list.add(Presence);
+        for (Presence presence : tabPresence) {
+			presence.update();
+            if(presence.getEtage() == salle)
+                Presence_list.add(presence);
         }
         System.out.println(Presence_list.toString());
         return Presence_list;

@@ -1,5 +1,7 @@
 package Microservices.Microservice_volet.model;
 
+import java.util.Random;
+
 public class volet {
 	
 	private int id, etage, salle;
@@ -42,15 +44,15 @@ public class volet {
 	public void setEtat(boolean etat) {
 		this.etat = etat;
 	}
-	public volet(int id, int etage, int salle) {
+	public volet(int etage, int salle) {
 		super();
-		this.id = id;
+		Random rand = new Random();
+		this.id = rand.nextInt(1000);
 		this.etage = etage;
 		this.salle = salle;
 	}
 	public volet() {
 		super();
 	}
-	
 	
 }

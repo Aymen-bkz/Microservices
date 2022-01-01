@@ -14,8 +14,8 @@ import Microservices.Microservice_fenetre.model.fenetre;
 @RestController
 @RequestMapping("/fenetres")
 public class fenetreRessource {
-    private fenetre[] fenetres_tab = { new fenetre(1, 0, 1), new fenetre(2, 0, 2), new fenetre(3, 1, 1),
-            new fenetre(4, 1, 2) };
+    private fenetre[] fenetres_tab = { new fenetre(0, 1), new fenetre(0, 2), new fenetre(1, 1),
+            new fenetre(1, 2) };
 
     @GetMapping("/status")
     public String fenetre_all() {
@@ -79,7 +79,7 @@ public class fenetreRessource {
         fenetre buff = new fenetre();
         System.out.println("id " + id + " etage " + etage + " salle " + salle + " order " + etat);
         for (fenetre fenetre : fenetres_tab) {
-            if (fenetre.getId() == id && fenetre.getEtage() == etage && fenetre.getSalle() == salle) {
+            if (fenetre.getEtage() == etage && fenetre.getSalle() == salle) {
                 fenetre.setEtat(etat);
                 buff = fenetre;
             }

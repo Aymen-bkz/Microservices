@@ -1,5 +1,7 @@
 package Microservices.Microservice_controlleur.model;
 
+import java.util.Random;
+
 public class fenetre {
 	private int id;
 	private boolean etat;
@@ -28,16 +30,16 @@ public class fenetre {
 	public void setSalle(int salle) {
 		this.salle = salle;
 	}
-	public fenetre(int id, int etage, int salle) {
+	public fenetre(int etage, int salle) {
 		super();
-		this.id = id;
+		Random rand = new Random();
+		this.id = rand.nextInt(1000);
 		this.etage = etage;
 		this.salle = salle;
 	}
 	public fenetre() {
 		super();
 	}
-	
 		
 
 }

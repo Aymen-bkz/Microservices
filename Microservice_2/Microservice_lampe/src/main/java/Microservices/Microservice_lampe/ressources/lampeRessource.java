@@ -14,8 +14,8 @@ import Microservices.Microservice_lampe.model.Lampe;
 @RestController
 @RequestMapping("/lampes")
 public class lampeRessource {
-    private Lampe[] Lampes_tab = { new Lampe(1, 0, 1), new Lampe(2, 0, 2), new Lampe(3, 1, 1),
-            new Lampe(4, 1, 2) };
+    private Lampe[] Lampes_tab = { new Lampe(0, 1), new Lampe(0, 2), new Lampe(1, 1),
+            new Lampe(1, 2) };
 
     @GetMapping("/status")
     public String Lampe_all() {
@@ -79,7 +79,7 @@ public class lampeRessource {
         Lampe buff = new Lampe();
         System.out.println("id " + id + " etage " + etage + " salle " + salle + " order " + etat);
         for (Lampe Lampe : Lampes_tab) {
-            if (Lampe.getId() == id && Lampe.getEtage() == etage && Lampe.getSalle() == salle) {
+            if (Lampe.getEtage() == etage && Lampe.getSalle() == salle) {
                 Lampe.setEtat(etat);
                 buff = Lampe;
             }

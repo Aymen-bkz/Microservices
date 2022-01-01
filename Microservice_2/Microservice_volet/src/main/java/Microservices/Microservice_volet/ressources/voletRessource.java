@@ -15,7 +15,7 @@ import Microservices.Microservice_volet.model.*;
 @RestController
 @RequestMapping("/volets")
 public class voletRessource { 
-    private volet[] volets_tab = {new volet(1,0,1), new volet(2, 0, 2), new volet(3, 1, 1), new volet(4, 1, 2)};
+    private volet[] volets_tab = {new volet(0,1), new volet(0, 2), new volet(1, 1), new volet(1, 2)};
 
     @GetMapping("/status")
     public String volet_all() {
@@ -77,7 +77,7 @@ public class voletRessource {
         volet buff = new volet();
         System.out.println("id " + id + " etage " + etage + " salle " + salle + " order " + order);
         for (volet volet : volets_tab) {
-            if(volet.getId() == id && volet.getEtage() == etage && volet.getSalle() == salle)
+            if(volet.getEtage() == etage && volet.getSalle() == salle)
             {
                 volet.setOrder(order);
                 buff = volet;

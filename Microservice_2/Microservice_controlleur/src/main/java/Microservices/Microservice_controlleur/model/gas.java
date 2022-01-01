@@ -1,5 +1,7 @@
 package Microservices.Microservice_controlleur.model;
 
+import java.util.Random;
+
 public class gas {
 	private int id;
 	private float data;
@@ -37,15 +39,23 @@ public class gas {
 		this.salle = salle;
 	}
 
-	public gas(int id, int etage, int salle, float data) {
+	public gas(int etage, int salle) {
 		super();
-		this.id = id;
+		Random rand = new Random();
+		this.id = rand.nextInt(1000);
 		this.etage = etage;
 		this.salle = salle;
-		this.data = data;
+		rand = new Random();
+		this.data = rand.nextInt(4095);
 	}
 
 	public gas() {
 		super();
 	}
+
+	public void update() {
+		Random rand = new Random();
+		this.data = rand.nextInt(4095);
+	}
+
 }

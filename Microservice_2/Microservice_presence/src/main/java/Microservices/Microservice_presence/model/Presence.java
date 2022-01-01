@@ -1,5 +1,7 @@
 package Microservices.Microservice_presence.model;
 
+import java.util.Random;
+
 public class Presence {
 	private int id, etage, salle;
 	private boolean etat;
@@ -28,18 +30,23 @@ public class Presence {
 	public void setEtat(boolean etat) {
 		this.etat = etat;
 	}
-	public Presence(int id, int etage, int salle,boolean etat) {
+	public Presence(int etage, int salle) {
 		super();
-		this.id = id;
+		Random rand = new Random();
+		this.id = rand.nextInt(1000);
 		this.etage = etage;
 		this.salle = salle;
-		this.etat=etat;
+		rand = new Random();
+		this.etat = rand.nextBoolean();
 	}
 	public Presence() {
 		super();
 	}
 	
-	
+	public void update() {
+		Random rand = new Random();
+		this.etat = rand.nextBoolean();
+	}
 	
 	
 }

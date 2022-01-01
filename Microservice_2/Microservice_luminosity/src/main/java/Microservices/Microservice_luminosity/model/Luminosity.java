@@ -1,5 +1,7 @@
 package Microservices.Microservice_luminosity.model;
 
+import java.util.Random;
+
 public class Luminosity {
 	private float data;
 	private int id, etage, salle;
@@ -40,12 +42,19 @@ public class Luminosity {
 		super();
 	}
 
-	public Luminosity(int id, int etage, int salle) {
+	public Luminosity(int etage, int salle) {
 		super();
-		this.id = id;
+		Random rand = new Random();
+		this.id = rand.nextInt(1000);
 		this.etage = etage;
 		this.salle = salle;
+		rand = new Random();
+		this.data = rand.nextInt(600);
 	}
-	
-		
+
+	public void update() {
+		Random rand = new Random();
+		this.data = rand.nextInt(600);
 	}
+
+}

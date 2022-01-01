@@ -1,13 +1,10 @@
 package Microservices.Microservice_controlleur.ressources;
 
-import java.net.http.HttpHeaders;
-import java.util.ArrayList;
 import java.util.List;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import org.apache.catalina.mapper.Mapper;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -50,6 +47,12 @@ public class controlleurRessource {
 				System.out.println(post_url);
 				restTemplate.postForObject(post_url, "", String.class);
 			}
+			else {
+				String post_url = voletUrl+"/order/" + volets_List.get(i).getId() + "/"
+						+ volets_List.get(i).getEtage() + "/" + volets_List.get(i).getSalle() + "/" + 0;
+				System.out.println(post_url);
+				restTemplate.postForObject(post_url, "", String.class);
+			}
 		}
 
 		// Senario 2
@@ -61,10 +64,16 @@ public class controlleurRessource {
 		});
 
 		for (int i = 0; i < fenetres_List.toArray().length; i++) {
-			if (gas_List.get(i).getData() > 100) {
+			if (gas_List.get(i).getData() > 3000) {
 				//fenetres_List.get(i).setEtat(true);
-				String post_url = fenetreUrl+"/order/" + volets_List.get(i).getId() + "/"
-						+ volets_List.get(i).getEtage() + "/" + volets_List.get(i).getSalle() + "/" + true;
+				String post_url = fenetreUrl+"/order/" + fenetres_List.get(i).getId() + "/"
+						+ fenetres_List.get(i).getEtage() + "/" + fenetres_List.get(i).getSalle() + "/" + true;
+				System.out.println(post_url);
+				restTemplate.postForObject(post_url, "", String.class);
+			}
+			else {
+				String post_url = fenetreUrl+"/order/" + fenetres_List.get(i).getId() + "/"
+						+ fenetres_List.get(i).getEtage() + "/" + fenetres_List.get(i).getSalle() + "/" + false;
 				System.out.println(post_url);
 				restTemplate.postForObject(post_url, "", String.class);
 			}
@@ -78,8 +87,14 @@ public class controlleurRessource {
 		for (int i = 0; i < lampes_List.toArray().length; i++) {
 			if (luminosities_List.get(i).getData() < 200) {
 				//lampes_List.get(i).setEtat(true);
-				String post_url = lampeUrl+"/order/" + volets_List.get(i).getId() + "/"
-						+ volets_List.get(i).getEtage() + "/" + volets_List.get(i).getSalle() + "/" + true;
+				String post_url = lampeUrl+"/order/" + lampes_List.get(i).getId() + "/"
+						+ lampes_List.get(i).getEtage() + "/" + lampes_List.get(i).getSalle() + "/" + true;
+				System.out.println(post_url);
+				restTemplate.postForObject(post_url, "", String.class);
+			}
+			else {
+				String post_url = lampeUrl+"/order/" + lampes_List.get(i).getId() + "/"
+						+ lampes_List.get(i).getEtage() + "/" + lampes_List.get(i).getSalle() + "/" + false;
 				System.out.println(post_url);
 				restTemplate.postForObject(post_url, "", String.class);
 			}
@@ -91,6 +106,7 @@ public class controlleurRessource {
 		msg += restTemplate.getForObject(gasUrl + "/status", String.class) + "<br>";
 		msg += restTemplate.getForObject(fenetreUrl + "/status", String.class) + "<br>";
 		msg += restTemplate.getForObject(lampeUrl + "/status", String.class) + "<br>";
+		
 		return msg;
 	}
 
