@@ -33,7 +33,7 @@ public class Presence {
 	public Presence(int etage, int salle) {
 		super();
 		Random rand = new Random();
-		this.id = rand.nextInt(1000);
+		this.id = etage*10 + salle;
 		this.etage = etage;
 		this.salle = salle;
 		rand = new Random();

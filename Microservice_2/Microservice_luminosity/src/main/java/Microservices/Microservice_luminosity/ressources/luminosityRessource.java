@@ -3,6 +3,7 @@ package Microservices.Microservice_luminosity.ressources;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,10 +12,11 @@ import org.springframework.web.bind.annotation.RestController;
 import Microservices.Microservice_luminosity.model.Luminosity;
 
 @RestController
+@CrossOrigin(origins = "*")
 @RequestMapping("/luminosité")
 public class luminosityRessource {
-    private Luminosity[] luminosities_tab = { new Luminosity(0, 1), new Luminosity(0, 2), new Luminosity(1, 1),
-            new Luminosity(1, 2) };
+    private Luminosity[] luminosities_tab = { new Luminosity(1, 1), new Luminosity(1, 2), new Luminosity(2, 1),
+            new Luminosity(2, 2) };
 
     @GetMapping("/{id}")
     public Luminosity getState_id(@PathVariable int id) {
@@ -44,7 +46,7 @@ public class luminosityRessource {
             Luminosity.update();
 			Luminosity_list.add(Luminosity);
 		}
-        System.out.println(Luminosity_list);
+        // System.out.println(Luminosity_list);
 		return Luminosity_list;
 	}
 

@@ -14,8 +14,8 @@ import Microservices.Microservice_fenetre.model.fenetre;
 @RestController
 @RequestMapping("/fenetres")
 public class fenetreRessource {
-    private fenetre[] fenetres_tab = { new fenetre(0, 1), new fenetre(0, 2), new fenetre(1, 1),
-            new fenetre(1, 2) };
+    private fenetre[] fenetres_tab = { new fenetre(1, 1), new fenetre(1, 2), new fenetre(2, 1),
+            new fenetre(2, 2) };
 
     @GetMapping("/status")
     public String fenetre_all() {

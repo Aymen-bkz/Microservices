@@ -13,8 +13,8 @@ import Microservices.Microservice_gas.model.gas;
 @RestController
 @RequestMapping("gas")
 public class gasRessource {
-    private gas[] gas_tab = { new gas(0, 1), new gas(0, 2), new gas(1, 1),
-            new gas(1, 2) };
+    private gas[] gas_tab = { new gas(1, 1), new gas(1, 2), new gas(2, 1),
+            new gas(2, 2) };
 
     @GetMapping("/{id}")
     public gas getState_id(@PathVariable int id) {

@@ -15,7 +15,7 @@ import Microservices.Microservice_volet.model.*;
 @RestController
 @RequestMapping("/volets")
 public class voletRessource { 
-    private volet[] volets_tab = {new volet(0,1), new volet(0, 2), new volet(1, 1), new volet(1, 2)};
+    private volet[] volets_tab = {new volet(1,1), new volet(1, 2), new volet(2, 1), new volet(2, 2)};
 
     @GetMapping("/status")
     public String volet_all() {

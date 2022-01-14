@@ -14,8 +14,8 @@ import Microservices.Microservice_lampe.model.Lampe;
 @RestController
 @RequestMapping("/lampes")
 public class lampeRessource {
-    private Lampe[] Lampes_tab = { new Lampe(0, 1), new Lampe(0, 2), new Lampe(1, 1),
-            new Lampe(1, 2) };
+    private Lampe[] Lampes_tab = { new Lampe(1, 1), new Lampe(1, 2), new Lampe(2, 1),
+            new Lampe(2, 2) };
 
     @GetMapping("/status")
     public String Lampe_all() {

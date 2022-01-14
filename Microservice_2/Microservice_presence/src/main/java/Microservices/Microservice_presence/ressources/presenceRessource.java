@@ -14,8 +14,8 @@ import Microservices.Microservice_presence.model.*;
 @RequestMapping("/presence")
 public class presenceRessource {
 
-	private static Presence[] tabPresence = { new Presence(0, 1), new Presence(0, 2),
-			new Presence(1, 1), new Presence(1, 2) };
+	private static Presence[] tabPresence = { new Presence(1, 1), new Presence(1, 2),
+			new Presence(2, 1), new Presence(2, 2) };
 
 	@GetMapping("/{id}")
 	public Presence getState_id(@PathVariable int id) {
