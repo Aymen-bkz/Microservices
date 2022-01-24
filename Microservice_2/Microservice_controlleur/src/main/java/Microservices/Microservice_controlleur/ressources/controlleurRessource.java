@@ -30,7 +30,7 @@ public class controlleurRessource {
 		RestTemplate restTemplate = new RestTemplate();
 		ObjectMapper mapper = new ObjectMapper();
 
-		List test = new ArrayList();
+		List test = new ArrayList<>();
 
 		// Senario 1
 		List<Luminosity> luminosities_List = restTemplate.getForObject(luminosityUrl + "/all", List.class);
@@ -47,13 +47,11 @@ public class controlleurRessource {
 		for (int i = 0; i < volets_List.toArray().length; i++) {
 			if (luminosities_List.get(i).getData() < 300 &&
 					presences_List.get(i).isEtat()) {
-				String post_url = voletUrl + "/order/" + volets_List.get(i).getId() + "/"
-						+ volets_List.get(i).getEtage() + "/" + volets_List.get(i).getSalle() + "/" + 100;
+				String post_url = voletUrl + "/order/" + volets_List.get(i).getId() + "/" + 100;
 				System.out.println(post_url);
 				restTemplate.postForObject(post_url, "", String.class);
 			} else {
-				String post_url = voletUrl + "/order/" + volets_List.get(i).getId() + "/"
-						+ volets_List.get(i).getEtage() + "/" + volets_List.get(i).getSalle() + "/" + 0;
+				String post_url = voletUrl + "/order/" + volets_List.get(i).getId() + "/" + 0;
 				System.out.println(post_url);
 				restTemplate.postForObject(post_url, "", String.class);
 			}
@@ -70,13 +68,11 @@ public class controlleurRessource {
 		for (int i = 0; i < fenetres_List.toArray().length; i++) {
 			if (gas_List.get(i).getData() > 3000) {
 				// fenetres_List.get(i).setEtat(true);
-				String post_url = fenetreUrl + "/order/" + fenetres_List.get(i).getId() + "/"
-						+ fenetres_List.get(i).getEtage() + "/" + fenetres_List.get(i).getSalle() + "/" + true;
+				String post_url = fenetreUrl + "/order/" + fenetres_List.get(i).getId() + "/"  + true;
 				System.out.println(post_url);
 				restTemplate.postForObject(post_url, "", String.class);
 			} else {
-				String post_url = fenetreUrl + "/order/" + fenetres_List.get(i).getId() + "/"
-						+ fenetres_List.get(i).getEtage() + "/" + fenetres_List.get(i).getSalle() + "/" + false;
+				String post_url = fenetreUrl + "/order/" + fenetres_List.get(i).getId() + "/" + false;
 				System.out.println(post_url);
 				restTemplate.postForObject(post_url, "", String.class);
 			}
@@ -89,30 +85,18 @@ public class controlleurRessource {
 		// Luminosité deja déclaré
 		for (int i = 0; i < lampes_List.toArray().length; i++) {
 			if (luminosities_List.get(i).getData() < 500 && presences_List.get(i).isEtat()) {
-				// lampes_List.get(i).setEtat(true);
-				String post_url = lampeUrl + "/order/" + lampes_List.get(i).getId() + "/"
-						+ lampes_List.get(i).getEtage() + "/" + lampes_List.get(i).getSalle() + "/" + true;
+				String post_url = lampeUrl + "/order/" + lampes_List.get(i).getId() + "/" +  true;
 				System.out.println(post_url);
 				restTemplate.postForObject(post_url, "", String.class);
 			} else {
-				String post_url = lampeUrl + "/order/" + lampes_List.get(i).getId() + "/"
-						+ lampes_List.get(i).getEtage() + "/" + lampes_List.get(i).getSalle() + "/" + false;
+				String post_url = lampeUrl + "/order/" + lampes_List.get(i).getId() + "/" + false;
 				System.out.println(post_url);
 				restTemplate.postForObject(post_url, "", String.class);
 			}
 		}
 
-		luminosities_List = restTemplate.getForObject(luminosityUrl + "/all", List.class);
-		luminosities_List = mapper.convertValue(luminosities_List, new TypeReference<List<Luminosity>>() {
-		});
-		presences_List = restTemplate.getForObject(PresenceUrl + "/all", List.class);
-		presences_List = mapper.convertValue(presences_List, new TypeReference<List<Presence>>() {
-		});
 		volets_List = restTemplate.getForObject(voletUrl + "/all", List.class);
 		volets_List = mapper.convertValue(volets_List, new TypeReference<List<volet>>() {
-		});
-		gas_List = restTemplate.getForObject(gasUrl + "/all", List.class);
-		gas_List = mapper.convertValue(gas_List, new TypeReference<List<gas>>() {
 		});
 		fenetres_List = restTemplate.getForObject(fenetreUrl + "/all", List.class);
 		fenetres_List = mapper.convertValue(fenetres_List, new TypeReference<List<fenetre>>() {
@@ -121,13 +105,14 @@ public class controlleurRessource {
 		lampes_List = mapper.convertValue(lampes_List, new TypeReference<List<Lampe>>() {
 		});
 
+		
+		
 		test.add(luminosities_List);
 		test.add(gas_List);
 		test.add(presences_List);
 		test.add(volets_List);
 		test.add(lampes_List);
 		test.add(fenetres_List);
-
 		// String msg = restTemplate.getForObject(PresenceUrl + "/status", String.class)
 		// + "<br>";
 		// msg += restTemplate.getForObject(luminosityUrl + "/status", String.class) +
@@ -141,6 +126,23 @@ public class controlleurRessource {
 		// "<br>";
 
 		return test;
+	}
+	@GetMapping("/status")
+	public String status() {
+		RestTemplate restTemplate = new RestTemplate();
+		String msg = restTemplate.getForObject(PresenceUrl + "/status", String.class)
+		+ "<br>";
+		msg += restTemplate.getForObject(luminosityUrl + "/status", String.class) +
+		"<br>";
+		msg += restTemplate.getForObject(voletUrl + "/status", String.class) +
+		"<br>";
+		msg += restTemplate.getForObject(gasUrl + "/status", String.class) + "<br>";
+		msg += restTemplate.getForObject(fenetreUrl + "/status", String.class) +
+		"<br>";
+		msg += restTemplate.getForObject(lampeUrl + "/status", String.class) +
+		"<br>";
+
+		return msg;
 	}
 
 }

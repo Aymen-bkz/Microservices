@@ -73,13 +73,11 @@ public class fenetreRessource {
         return fenetre_list;
     }
 
-    @PostMapping("/order/{id}/{etage}/{salle}/{etat}")
-    public fenetre setfenetreOrder(@PathVariable int id, @PathVariable int etage, @PathVariable int salle,
-            @PathVariable Boolean etat) {
+    @PostMapping("/order/{id}/{etat}")
+    public fenetre setfenetreOrder(@PathVariable int id, @PathVariable Boolean etat) {
         fenetre buff = new fenetre();
-        System.out.println("id " + id + " etage " + etage + " salle " + salle + " order " + etat);
         for (fenetre fenetre : fenetres_tab) {
-            if (fenetre.getEtage() == etage && fenetre.getSalle() == salle) {
+            if (fenetre.getId() == id) {
                 fenetre.setEtat(etat);
                 buff = fenetre;
             }

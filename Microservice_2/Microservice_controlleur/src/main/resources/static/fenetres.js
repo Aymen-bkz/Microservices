@@ -110,7 +110,7 @@ am5.ready(async function() {
 
     yAxis.data.setAll(data);
     series.data.setAll(data);
-    sortCategoryAxis();
+    // sortCategoryAxis();
 
     // Get series item by category
     function getSeriesItem(category) {

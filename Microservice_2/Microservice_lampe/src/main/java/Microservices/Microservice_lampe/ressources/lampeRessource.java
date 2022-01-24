@@ -73,13 +73,11 @@ public class lampeRessource {
         return Lampe_list;
     }
 
-    @PostMapping("/order/{id}/{etage}/{salle}/{etat}")
-    public Lampe setLampeOrder(@PathVariable int id, @PathVariable int etage, @PathVariable int salle,
-            @PathVariable Boolean etat) {
+    @PostMapping("/order/{id}/{etat}")
+    public Lampe setLampeOrder(@PathVariable int id, @PathVariable Boolean etat) {
         Lampe buff = new Lampe();
-        System.out.println("id " + id + " etage " + etage + " salle " + salle + " order " + etat);
         for (Lampe Lampe : Lampes_tab) {
-            if (Lampe.getEtage() == etage && Lampe.getSalle() == salle) {
+            if (Lampe.getId() == id) {
                 Lampe.setEtat(etat);
                 buff = Lampe;
             }

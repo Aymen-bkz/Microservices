@@ -72,12 +72,11 @@ public class voletRessource {
         return volet_list;
     }
 
-    @PostMapping("/order/{id}/{etage}/{salle}/{order}")
-    public volet setVoletOrder(@PathVariable int id, @PathVariable int etage, @PathVariable int salle, @PathVariable double order) {
+    @PostMapping("/order/{id}/{order}")
+    public volet setVoletOrder(@PathVariable int id, @PathVariable double order) {
         volet buff = new volet();
-        System.out.println("id " + id + " etage " + etage + " salle " + salle + " order " + order);
         for (volet volet : volets_tab) {
-            if(volet.getEtage() == etage && volet.getSalle() == salle)
+            if(volet.getId() == id)
             {
                 volet.setOrder(order);
                 buff = volet;

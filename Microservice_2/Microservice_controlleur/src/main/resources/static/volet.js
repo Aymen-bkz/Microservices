@@ -60,6 +60,19 @@ am5.ready(async function() {
         })
     }));
 
+    series.bullets.push(function() {
+        return am5.Bullet.new(root, {
+            locationY: 1,
+            sprite: am5.Label.new(root, {
+                text: "{valueX}",
+                fill: root.interfaceColors.get("alternativeText"),
+                centerY: 40,
+                centerX: am5.p50,
+                populateText: true
+            })
+        });
+    });
+
 
     // Rounded corners for columns
     series.columns.template.setAll({
@@ -98,7 +111,7 @@ am5.ready(async function() {
 
     yAxis.data.setAll(data);
     series.data.setAll(data);
-    sortCategoryAxis();
+    // sortCategoryAxis();
 
     // Get series item by category
     function getSeriesItem(category) {
@@ -160,9 +173,9 @@ am5.ready(async function() {
 
 
     // update data with random values each 1.5 sec
-    // setInterval(function() {
-    //     updateData();
-    // }, 1500)
+    setInterval(function() {
+        updateData();
+    }, 1500)
 
     function updateData() {
         let count = 0;
