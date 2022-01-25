@@ -22,7 +22,7 @@ jobs:
         distribution: 'temurin'
 
     - name: Build with Maven
-      run: mvn -B package --file Microservices/Microservices/Microservice_controlleur/pom.xml
+      run: mvn -B package --file Microservices//Microservice_controlleur/pom.xml
       
   build-fenetres:
 
@@ -40,7 +40,7 @@ jobs:
         distribution: 'temurin'
 
     - name: Build with Maven
-      run: mvn -B package --file Microservices/Microservices/Microservice_fenetre/pom.xml
+      run: mvn -B package --file Microservices/Microservice_fenetre/pom.xml
       
   build-gas:
 
@@ -58,7 +58,7 @@ jobs:
         distribution: 'temurin'
         
     - name: Build with Maven
-      run: mvn -B package --file Microservices/Microservices/Microservice_gas/pom.xml
+      run: mvn -B package --file Microservices/Microservice_gas/pom.xml
       
   build-lampe:
 
@@ -76,7 +76,7 @@ jobs:
         distribution: 'temurin'
 
     - name: Build with Maven
-      run: mvn -B package --file Microservices/Microservices/Microservice_lampe/pom.xml
+      run: mvn -B package --file Microservices/Microservice_lampe/pom.xml
       
   build-luminosity:
 
@@ -94,7 +94,7 @@ jobs:
         distribution: 'temurin'
 
     - name: Build with Maven
-      run: mvn -B package --file Microservices/Microservices/Microservice_luminosity/pom.xml
+      run: mvn -B package --file Microservices/Microservice_luminosity/pom.xml
       
   build-presence:
 
@@ -112,7 +112,7 @@ jobs:
         distribution: 'temurin'
 
     - name: Build with Maven
-      run: mvn -B package --file Microservices/Microservices/Microservice_presence/pom.xml
+      run: mvn -B package --file Microservices/Microservice_presence/pom.xml
       
   build-volet:
 
@@ -130,7 +130,7 @@ jobs:
         distribution: 'temurin'
 
     - name: Build with Maven
-      run: mvn -B package --file Microservices/Microservices/Microservice_volet/pom.xml
+      run: mvn -B package --file Microservices/Microservice_volet/pom.xml
 
 
 
