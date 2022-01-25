@@ -231,11 +231,13 @@
 
         const set_seccess = () => {
             document.querySelector('.alert').classList.add('alert-success');
+            document.querySelector(".alert").classList.remove('alert-danger');
             document.querySelector('use').attributes.getNamedItem('xlink:href').value = "#check-circle-fill"
             document.querySelector('.resp').innerText = "200"
         }
         const set_danger = () => {
             document.querySelector('.alert').classList.add('alert-danger');
+            document.querySelector(".alert").classList.remove('alert-success')
             document.querySelector('use').attributes.getNamedItem('xlink:href').value = "#exclamation-triangle-fill"
             document.querySelector('.resp').innerText = "Wrong ID"
         }
